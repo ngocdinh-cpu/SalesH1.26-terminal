@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SALES H1 TERMINAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+  <header class="systembar">
+    <span>SALES H1 TERMINAL /// SYSTEM ONLINE</span>
+    <button id="soundBtn">[SOUND: ON]</button>
+  </header>
+
+  <main>
+    <!-- USER LOGIN -->
+    <section id="loginView" class="screen login-screen">
+      <div class="brand">SALES H1<br>TERMINAL</div>
+      <div class="eyebrow">SECURE ACCESS POINT</div>
+      <div class="login-box">
+        <input id="accessKey" autocomplete="off" placeholder="ACCESS KEY / ID">
+        <button id="initBtn" class="lime">INITIALIZE</button>
+      </div>
+      <p class="muted">SECURE TERMINAL // AUTHORIZED PERSONNEL ONLY</p>
+      <p id="loginMsg" class="error"></p>
+      <button id="adminBtn" class="admin-link">ADMIN ACCESS</button>
+    </section>
+
+    <!-- USER TICKET -->
+    <section id="ticketView" class="screen ticket-screen hidden">
+      <div class="access-head">
+        <div>
+          <div class="eyebrow">ACCESS GRANTED</div>
+          <div id="welcomeText" class="welcome">WELCOME</div>
+        </div>
+        <button id="logoutBtn" class="ghost">LOGOUT</button>
+      </div>
+
+      <div class="user-ticket-area">
+        <div id="ticket" class="ticket">
+          <img id="ticketBg" class="ticket-bg hidden" alt="">
+          <div class="ticket-overlay"></div>
+          <div class="ticket-content">
+            <div class="ticket-top">
+              <span id="pEvent">EVENT/// SALES H1 BONDING</span>
+              <span>/// SALES H1 TERMINAL</span>
+            </div>
+            <div class="ticket-line"></div>
+            <div class="ticket-meta">
+              <span id="pDate">19:00 • 05.09.2026</span>
+              <span id="pLocation">HANOI, VIETNAM</span>
+            </div>
+            <div class="spacer"></div>
+            <div id="pTag" class="authorized">AUTHORIZED PERSONNEL</div>
+            <div id="pName" class="guest">YOUR NAME</div>
+            <div id="pNote" class="note">NOTE: —</div>
+            <div class="ticket-line"></div>
+            <div class="ticket-bottom">
+              <div>
+                <div id="barcode" class="barcode"></div>
+                <span>ID: <b id="pId">000000</b></span>
+              </div>
+              <div id="accessCircle" class="access">FULL<br>ACCESS</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-actions">
+          <button id="saveBtn" class="lime">SAVE IMAGE</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN -->
+    <section id="adminView" class="screen admin-screen hidden">
+      <div class="access-head">
+        <div>
+          <div class="eyebrow">ADMIN ACCESS GRANTED</div>
+          <div class="welcome">TICKET CONTROL</div>
+        </div>
+        <button id="adminLogoutBtn" class="ghost">LOGOUT</button>
+      </div>
+
+      <div class="admin-grid">
+        <div class="admin-panel">
+          <div class="panel-title">GUEST / TICKET CONFIG</div>
+
+          <label>ACCESS KEY
+            <input id="aKey" placeholder="0807">
+          </label>
+
+          <label>GUEST NAME
+            <input id="aName" placeholder="dducanhlee">
+          </label>
+
+          <label>EVENT NAME
+            <input id="aEvent" value="SALES H1 BONDING 2026">
+          </label>
+
+          <label>DATE / TIME
+            <input id="aDate" value="19:00 • 05.09.2026">
+          </label>
+
+          <label>LOCATION
+            <input id="aLocation" value="HANOI, VIETNAM">
+          </label>
+
+          <label>NOTE
+            <input id="aNote" value="FULL ACCESS">
+          </label>
+
+          <label>TAG
+            <input id="aTag" value="AUTHORIZED PERSONNEL">
+          </label>
+
+          <div class="two-col">
+            <label>TICKET COLOR
+              <input id="aColor" type="color" value="#b6ff00">
+            </label>
+            <label>OPACITY
+              <input id="aOpacity" type="range" min="0" max="1" step=".05" value=".72">
+            </label>
+          </div>
+
+          <label>BACKGROUND IMAGE
+            <input id="aImage" type="file" accept="image/*">
+          </label>
+
+          <div class="button-row">
+            <button id="previewBtn" class="outline">PREVIEW</button>
+            <button id="saveTicketBtn" class="lime">SAVE TICKET</button>
+          </div>
+
+          <div class="button-row">
+            <button id="newTicketBtn" class="outline">NEW GUEST</button>
+            <button id="exportBtn" class="outline">EXPORT CONFIG</button>
+          </div>
+
+          <p id="adminMsg" class="muted"></p>
+        </div>
+
+        <div class="admin-panel">
+          <div class="panel-title">SAVED GUESTS</div>
+          <div id="guestList" class="guest-list"></div>
+          <p class="muted">Tickets saved here are stored in this browser. For all event guests to see the same saved tickets on Netlify, the final ticket data must be placed in <code>app.js</code> (or connected to a database).</p>
+        </div>
+      </div>
+
+      <div class="admin-preview">
+        <div class="panel-title">LIVE PREVIEW</div>
+        <div id="adminTicketMount"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 SALES H1 TERMINAL. ALL RIGHTS RESERVED.</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
